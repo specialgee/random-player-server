@@ -117,9 +117,9 @@ getVideos = async (req, res) => {
 }
 
 module.exports = {
-    createMovie,
-    updateMovie,
-    deleteMovie,
-    getMovies,
-    getMovieById,
+    createVideo,
+    updateVideo,
+    deleteVideo,
+    getVideos,
+    getVideoById,
 }

@@ -43,7 +43,7 @@ updateVideo = async (req, res) => {
         })
     }
 
-    Video.findOne({ _id: req.params.id }, (err, movie) => {
+    Video.findOne({ _id: req.params.id }, (err, video) => {
         if (err) {
             return res.status(404).json({
                 err,

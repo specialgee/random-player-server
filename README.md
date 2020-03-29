@@ -1,4 +1,4 @@
 random-player-server
 ---
 
-Random Youtube Video Player Back-End
+[random-player](https://github.com/specialgee/random-player) back-end

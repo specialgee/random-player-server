@@ -1,19 +1,19 @@
-const Video = require('../models/video-model')
+const Video = require('../models/video-model');
 
 createVideo = (req, res) => {
-    const body = req.body
+    const body = req.body;
 
     if (!body) {
         return res.status(400).json({
             success: false,
             error: 'You must provide a video',
-        })
+        });
     }
 
-    const video = new Video(body)
+    const video = new Video(body);
 
     if (!video) {
-        return res.status(400).json({ success: false, error: err })
+        return res.status(400).json({ success: false, error: err });
     }
 
     video
@@ -23,24 +23,24 @@ createVideo = (req, res) => {
                 success: true,
                 id: video._id,
                 message: 'Video created !',
-            })
+            });
         })
         .catch(error => {
             return res.status(400).json({
                 error,
                 message: 'Video not created !',
-            })
+            });
         })
 }
 
 updateVideo = async (req, res) => {
-    const body = req.body
+    const body = req.body;
 
     if (!body) {
         return res.status(400).json({
             success: false,
             error: 'You must provide a body to update',
-        })
+        });
     }
 
     Video.findOne({ _id: req.params.id }, (err, video) => {
@@ -48,11 +48,11 @@ updateVideo = async (req, res) => {
             return res.status(404).json({
                 err,
                 message: 'Video not found !',
-            })
+            });
         }
-        video.title = body.title
-        video.id = body.id
-        video.views = body.views
+        video.title = body.title;
+        video.id = body.id;
+        video.views = body.views;
         video
             .save()
             .then(() => {
@@ -60,13 +60,13 @@ updateVideo = async (req, res) => {
                     success: true,
                     id: video._id,
                     message: 'Video updated !',
-                })
+                });
             })
             .catch(error => {
                 return res.status(404).json({
                     error,
                     message: 'Video not updated !',
-                })
+                });
             })
     })
 }
@@ -74,45 +74,45 @@ updateVideo = async (req, res) => {
 deleteVideo = async (req, res) => {
     await Video.findOneAndDelete({ _id: req.params.id }, (err, video) => {
         if (err) {
-            return res.status(400).json({ success: false, error: err })
+            return res.status(400).json({ success: false, error: err });
         }
 
         if (!video) {
             return res
                 .status(404)
-                .json({ success: false, error: `Video not found` })
+                .json({ success: false, error: `Video not found` });
         }
 
-        return res.status(200).json({ success: true, data: video })
+        return res.status(200).json({ success: true, data: video });
     }).catch(err => console.log(err))
 }
 
 getVideoById = async (req, res) => {
     await Video.findOne({ _id: req.params.id }, (err, video) => {
         if (err) {
-            return res.status(400).json({ success: false, error: err })
+            return res.status(400).json({ success: false, error: err });
         }
 
         if (!video) {
             return res
                 .status(404)
-                .json({ success: false, error: `Video not found` })
+                .json({ success: false, error: `Video not found` });
         }
-        return res.status(200).json({ success: true, data: video })
+        return res.status(200).json({ success: true, data: video });
     }).catch(err => console.log(err))
 }
 
 getVideos = async (req, res) => {
     await Video.find({}, (err, videos) => {
         if (err) {
-            return res.status(400).json({ success: false, error: err })
+            return res.status(400).json({ success: false, error: err });
         }
         if (!videos.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Video not found` })
+                .json({ success: false, error: `Video not found` });
         }
-        return res.status(200).json({ success: true, data: videos })
+        return res.status(200).json({ success: true, data: videos });
     }).catch(err => console.log(err))
 }
 

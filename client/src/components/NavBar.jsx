@@ -6,12 +6,14 @@ import Links from './Links';
 
 const Container = styled.div.attrs({
     className: 'container',
-})``
+})`
+    height: 150px;
+`
 
 const Nav = styled.nav.attrs({
     className: 'navbar navbar-expand-lg navbar-dark',
 })`
-    margin-bottom: 20px;
+    margin-bottom: 20 px;
     background-color: #000;
 `
 

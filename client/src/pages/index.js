@@ -1,5 +1,5 @@
-import VideosList from './VideosList'
-import VideosInsert from './VideosInsert'
-import VideosUpdate from './VideosUpdate'
+import VideoList from './VideoList';
+import VideoInsert from './VideoInsert';
+import VideoUpdate from './VideoUpdate';
 
-export { VideosList, VideosInsert, VideosUpdate };
+export { VideoList, VideoInsert, VideoUpdate };

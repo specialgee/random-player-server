@@ -25,12 +25,12 @@ class Links extends Component {
                     <List>
                         <Item>
                             <Link to="/videos/list" className="nav-link">
-                                Videos List
+                                List
                             </Link>
                         </Item>
                         <Item>
                             <Link to="/videos/create" className="nav-link">
-                                Create Video
+                                Add Video
                             </Link>
                         </Item>
                     </List>

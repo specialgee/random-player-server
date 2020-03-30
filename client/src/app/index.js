@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import { NavBar } from '../components';
-import { VideosList, VideosInsert, VideosUpdate } from '../pages';
+import { VideoList, VideoInsert, VideoUpdate } from '../pages';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,12 +11,12 @@ function App() {
         <Router>
             <NavBar />
             <Switch>
-                <Route path="/videos/list" exact component={VideosList} />
-                <Route path="/videos/create" exact component={VideosInsert} />
+                <Route path="/videos/list" exact component={VideoList} />
+                <Route path="/videos/create" exact component={VideoInsert} />
                 <Route
                     path="/videos/update/:id"
                     exact
-                    component={VideosUpdate}
+                    component={VideoUpdate}
                 />
             </Switch>
         </Router>

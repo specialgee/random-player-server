@@ -3,6 +3,10 @@ import api from '../api';
 
 import styled from 'styled-components';
 
+import getYoutubeTitle from 'get-youtube-title';
+
+const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
+
 const Title = styled.h1.attrs({
     className: 'h1',
 })``
@@ -76,6 +80,15 @@ class VideoInsert extends Component {
     handleChangeInputUrl = async event => {
         const url = event.target.value;
         this.setState({ url });
+
+        const _this = this;
+
+        getYoutubeTitle(url, API_KEY, function (err, title) {
+            console.log(title);
+            console.log(err);
+
+            _this.setState({ title });
+        })
     }
     
     handleChangeInputCategory = async event => {
@@ -98,7 +111,7 @@ class VideoInsert extends Component {
     }
 
     render() {
-        const { title, url, category } = this.state
+        const { title, url, category } = this.state;
         return (
             <Wrapper>
                 <Title>ADD VIDEO</Title>

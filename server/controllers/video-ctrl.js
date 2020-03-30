@@ -51,8 +51,8 @@ updateVideo = async (req, res) => {
             });
         }
         video.title = body.title;
-        video.id = body.id;
-        video.views = body.views;
+        video.url = body.url;
+        video.category = body.category;
         video
             .save()
             .then(() => {

@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const Video = new Schema(
     {
-        title: { type: String, required: true },
-        id: { type: String, required: true },
-        views: { type: Number, required: true },
+        title: { type: String, required: false },
+        url: { type: String, required: true },
+        category: { type: String, required: true },
     },
     { timestamps: true },
 )

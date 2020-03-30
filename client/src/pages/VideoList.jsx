@@ -53,7 +53,7 @@ class DeleteVideo extends Component {
 
 class VideoList extends Component {
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             videos: [],
             columns: [],
@@ -82,18 +82,18 @@ class VideoList extends Component {
                 filterable: true,
             },
             {
-                Header: 'Title',
+                Header: 'TITLE',
                 accessor: 'title',
                 filterable: true,
             },
             {
                 Header: 'URL',
-                accessor: 'id',
-                Cell: props => <span>{props.value}</span>,
+                accessor: 'url',
+                filterable: true,
             },
             {
-                Header: 'Views',
-                accessor: 'views',
+                Header: 'CATEGORY',
+                accessor: 'category',
                 filterable: true,
             },
             {

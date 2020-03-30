@@ -4,7 +4,7 @@ import api from '../api';
 
 import styled from 'styled-components';
 
-//import 'react-table/react-table.css';
+import 'react-table/react-table.css';
 
 const Wrapper = styled.div`
     padding: 0 40px 40px 40px;
@@ -21,24 +21,24 @@ const Delete = styled.div`
 `
 
 class UpdateVideo extends Component {
-    updateUser = event => {
+    updateEntry = event => {
         event.preventDefault();
 
         window.location.href = `/videos/update/${this.props.id}`;
     }
 
     render() {
-        return <Update onClick={this.updateUser}>Update</Update>;
+        return <Update onClick={this.updateEntry}>Update</Update>;
     }
 }
 
 class DeleteVideo extends Component {
-    deleteUser = event => {
-        event.preventDefault()
+    deleteEntry = event => {
+        event.preventDefault();
 
         if (
             window.confirm(
-                `Do tou want to delete the video ${this.props.id} permanently?`,
+                `Do you want to delete the video ${this.props.id} permanently?`,
             )
         ) {
             api.deleteVideoById(this.props.id);
@@ -47,11 +47,11 @@ class DeleteVideo extends Component {
     }
 
     render() {
-        return <Delete onClick={this.deleteUser}>Delete</Delete>;
+        return <Delete onClick={this.deleteEntry}>Delete</Delete>;
     }
 }
 
-class VideosList extends Component {
+class VideoList extends Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -73,7 +73,7 @@ class VideosList extends Component {
     }
 
     render() {
-        const { videos, isLoading } = this.state
+        const { videos, isLoading } = this.state;
 
         const columns = [
             {
@@ -89,12 +89,12 @@ class VideosList extends Component {
             {
                 Header: 'URL',
                 accessor: 'id',
-                filterable: true,
+                Cell: props => <span>{props.value}</span>,
             },
             {
                 Header: 'Views',
                 accessor: 'views',
-                Cell: props => <span>{props.value}</span>,
+                filterable: true,
             },
             {
                 Header: '',
@@ -120,7 +120,7 @@ class VideosList extends Component {
             },
         ]
 
-        let showTable = true
+        let showTable = true;
         if (!videos.length) {
             showTable = false;
         }
@@ -142,4 +142,4 @@ class VideosList extends Component {
     }
 }
 
-export default VideosList;
+export default VideoList;

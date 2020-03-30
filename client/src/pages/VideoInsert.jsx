@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../api';
 
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 const Title = styled.h1.attrs({
     className: 'h1',
@@ -35,12 +35,11 @@ const CancelButton = styled.a.attrs({
     margin: 15px 15px 15px 5px;
 `
 
-class VideosUpdate extends Component {
+class VideoInsert extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            _id: this.props.match.params.id,
             title: '',
             id: '',
             views: '',
@@ -53,24 +52,24 @@ class VideosUpdate extends Component {
     }
 
     handleChangeInputId = async event => {
-        const id = event.target.validity.valid
-            ? event.target.value
-            : this.state.id
-
+        const id = event.target.value;
         this.setState({ id });
     }
-
+    
     handleChangeInputViews = async event => {
-        const views = event.target.value;
+        const views = event.target.validity.valid
+            ? event.target.value
+            : this.state.views;
+
         this.setState({ views });
     }
 
-    handleUpdateVideo = async () => {
-        const { _id, title, id, views } = this.state;
+    handleIncludeVideo = async () => {
+        const { title, id, views } = this.state;
         const payload = { title, id, views };
 
-        await api.updateVideoById(_id, payload).then(res => {
-            window.alert(`Video updated successfully`)
+        await api.insertVideo(payload).then(res => {
+            window.alert(`Video inserted successfully`);
             this.setState({
                 title: '',
                 id: '',
@@ -79,19 +78,8 @@ class VideosUpdate extends Component {
         })
     }
 
-    componentDidMount = async () => {
-        const { _id } = this.state;
-        const video = await api.getVideoById(_id);
-
-        this.setState({
-            title: video.data.data.title,
-            id: video.data.data.id,
-            views: video.data.data.views,
-        })
-    }
-
     render() {
-        const { title, id, views } = this.state;
+        const { title, id, views } = this.state
         return (
             <Wrapper>
                 <Title>Create Video</Title>
@@ -122,11 +110,11 @@ class VideosUpdate extends Component {
                     onChange={this.handleChangeInputViews}
                 />
 
-                <Button onClick={this.handleUpdateVideo}>Update Video</Button>
+                <Button onClick={this.handleIncludeVideo}>Add Video</Button>
                 <CancelButton href={'/videos/list'}>Cancel</CancelButton>
             </Wrapper>
         )
     }
 }
 
-export default VideosUpdate;
+export default VideoInsert;

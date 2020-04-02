@@ -12,7 +12,7 @@ const db = require('./db');
 const videoRouter = require('./routes/video-router');
 
 const app = express();
-const apiPort = 3000;
+const apiPort = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

@@ -33,7 +33,7 @@ createVideo = (req, res) => {
         })
 }
 
-updateVideo = async (req, res) => {
+updateVideo = (req, res) => {
     const body = req.body;
 
     if (!body) {

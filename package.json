@@ -16,6 +16,5 @@
     "mongoose": "^5.9.6",
     "nodemon": "^2.0.2",
     "rootpath": "^0.1.2"
-  },
-  "proxy": "http://localhost:3000"
+  }
 }

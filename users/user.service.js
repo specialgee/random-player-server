@@ -1,5 +1,4 @@
-﻿//const config = require('config.json');
-const jwt = require('jsonwebtoken');
+﻿const jwt = require('jsonwebtoken');
 const Role = require('helpers/role');
 
 // users hardcoded for simplicity, store in a db for production applications

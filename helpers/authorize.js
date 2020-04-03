@@ -1,5 +1,5 @@
 const expressJwt = require('express-jwt');
-//const { secret } = require('config.json');
+const secret = process.env.JWT_SECRET_KEY;
 
 module.exports = authorize;
 

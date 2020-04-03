@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const Schema = mongoose.Schema;
 
 const Video = new Schema(
@@ -7,7 +8,7 @@ const Video = new Schema(
         url: { type: String, required: true },
         category: { type: String, required: true },
     },
-    { timestamps: true },
+    { timestamps: false },
 )
 
 module.exports = mongoose.model('videos', Video);

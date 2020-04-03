@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/random-player', { useNewUrlParser: true })
+    .connect(process.env.MONGOLAB_URI || 'mongodb://127.0.0.1:27017/random-player', { useNewUrlParser: true, useUnifiedTopology: true })
+    .then(() => console.log("Database Connected Successfully"))
     .catch(e => {
         console.error('Connection error', e.message)
     })

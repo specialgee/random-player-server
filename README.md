@@ -1,7 +1,7 @@
 random-player-server
 ---
 
-[random-player](https://github.com/specialgee/random-player) back-end
+[Donats](https://github.com/specialgee/donats) Back-End
 
 ### Usage
 

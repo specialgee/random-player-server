@@ -51,7 +51,7 @@ updatePlaylist = async (req, res) => {
             });
         }
         playlist.name = body.name;
-        playlist.categories = body.categories;
+        playlist.category = body.category;
         playlist.cover = body.cover;
         playlist.url = body.url;
         playlist

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const Playlist = new Schema(
     {
         name: { type: String, required: true },
-        categories: { type: [String], required: true },
+        category: { type: [String], required: true },
         cover: { type: String, data: Buffer, required: true },
         url: { type: String, required: false },
     },

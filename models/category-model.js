@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
-const Playlist = new Schema(
+const Category = new Schema(
     {
         name: { type: String, required: true },
         category: { type: [String], required: true },
@@ -12,4 +12,4 @@ const Playlist = new Schema(
     { timestamps: false },
 )
 
-module.exports = mongoose.model('playlists', Playlist);
+module.exports = mongoose.model('categories', Category);

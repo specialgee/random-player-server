@@ -6,6 +6,7 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 
 const videoRouter = require('./routes/video-router');
+const playlistRouter = require('./routes/playlist-router');
 
 const apiPort = process.env.PORT || 3000
 
@@ -27,6 +28,7 @@ app.post("/", (req, res) => {
 
 // api routes
 app.use('/api', videoRouter);
+app.use('/api', playlistRouter);
 app.use('/users', require('./users/users.controller'));
 
 // global error handler

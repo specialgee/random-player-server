@@ -11,7 +11,6 @@ createCategory = (req, res) => {
     }
 
     const category = new Category(body);
-    console.log("CATEGORY MODEL: ", category);
 
     if (!category) {
         return res.status(400).json({ success: false, error: err });

@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 const Category = new Schema(
     {
         name: { type: String, required: true },
-        category: { type: [String], required: true },
+        category: { type: Array, required: true },
         cover: { type: String, data: Buffer, required: true },
         url: { type: String, required: false },
     },

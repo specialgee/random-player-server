@@ -5,8 +5,8 @@ const Schema = mongoose.Schema;
 const Category = new Schema(
     {
         name: { type: String, required: true },
-        category: { type: Array, required: true },
-        cover: { type: String, data: Buffer, required: true },
+        category: { type: Array, required: false },
+        cover: { type: String, data: Buffer, required: false },
         url: { type: String, required: false },
     },
     { timestamps: false },

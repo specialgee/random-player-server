@@ -15,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+// connect to mongoDB
 const db = require('./db');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
@@ -27,9 +28,22 @@ app.post("/", (req, res) => {
 });
 
 // api routes
+app.use('/users', require('./users/users.controller'));
 app.use('/api', videoRouter);
 app.use('/api', categoryRouter);
-app.use('/users', require('./users/users.controller'));
+
+// uploads
+const multer = require('multer');
+const upload = multer({dest: __dirname + '/uploads/img'});
+
+app.use(express.static('public'));
+
+app.post('/upload', upload.single('image'), (req, res) => {
+    if(req.file) {
+        res.json(req.file);
+    }
+    else throw 'error';
+});
 
 // global error handler
 const errorHandler = require('helpers/error-handler');

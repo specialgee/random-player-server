@@ -51,6 +51,8 @@ const router = express.Router();
 let User = require('../models/User');
 
 router.post('/user-profile', upload.single('profileImg'), (req, res, next) => {
+    console.log(req);
+    console.log(req.get('host'));
     const url = req.protocol + '://' + req.get('host')
     const user = new User({
         _id: new mongoose.Types.ObjectId(),

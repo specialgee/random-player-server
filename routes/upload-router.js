@@ -51,9 +51,8 @@ const router = express.Router();
 let User = require('../models/User');
 
 router.post('/user-profile', upload.single('profileImg'), (req, res, next) => {
-    console.log(req);
-    console.log(req.get('host'));
-    const url = req.protocol + '://' + req.get('host')
+    //const url = req.protocol + '://' + req.get('host')
+    const url = "https://random-player-server.herokuapp.com";
     const user = new User({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,

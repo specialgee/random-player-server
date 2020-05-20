@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const multer = require('multer');
 const uuid = require('uuid');
 
-const DIR = './public/uploads';
+const DIR = './public/';
 
 const storage = multer.diskStorage({
     destination: (req, file, cb) => {

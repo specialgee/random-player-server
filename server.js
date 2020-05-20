@@ -7,6 +7,7 @@ const cors = require('cors');
 
 const videoRouter = require('./routes/video-router');
 const categoryRouter = require('./routes/category-router');
+const uploadRouter = require('./routes/upload-router');
 
 const apiPort = process.env.PORT || 3000
 
@@ -33,17 +34,9 @@ app.use('/api', videoRouter);
 app.use('/api', categoryRouter);
 
 // uploads
-const multer = require('multer');
-const upload = multer({dest: __dirname + '/uploads/img'});
+app.use('/public', express.static('public'));
 
-app.use(express.static('public'));
-
-app.post('/upload', upload.single('image'), (req, res) => {
-    if(req.file) {
-        res.json(req.file);
-    }
-    else throw 'error';
-});
+app.use('/api', uploadRouter);
 
 // global error handler
 const errorHandler = require('helpers/error-handler');

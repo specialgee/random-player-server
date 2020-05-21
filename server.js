@@ -34,7 +34,7 @@ app.use('/api', videoRouter);
 app.use('/api', categoryRouter);
 
 // uploads
-app.use(express.static(__dirname, 'public'));
+app.use(express.static('public'));
 
 app.use('/api', uploadRouter);
 

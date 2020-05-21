@@ -7,7 +7,6 @@ const cors = require('cors');
 
 const videoRouter = require('./routes/video-router');
 const categoryRouter = require('./routes/category-router');
-const uploadRouter = require('./routes/upload-router');
 
 const apiPort = process.env.PORT || 3000
 
@@ -32,11 +31,6 @@ app.post("/", (req, res) => {
 app.use('/users', require('./users/users.controller'));
 app.use('/api', videoRouter);
 app.use('/api', categoryRouter);
-
-// uploads
-app.use(express.static('public'));
-
-app.use('/api', uploadRouter);
 
 // global error handler
 const errorHandler = require('helpers/error-handler');

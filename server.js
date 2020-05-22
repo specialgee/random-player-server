@@ -15,6 +15,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 
+// // CORS proxy
+// app.post('/api/category', (req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
+app.use(function (req, res, next) {
+  res.setHeader('Access-Control-Allow-Origin', '*');
+
+  next();
+});
+
 // connect to mongoDB
 const db = require('./db');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -25,12 +36,6 @@ app.get('/', (req, res) => {
 
 app.post("/", (req, res) => {
   res.send("POST request");
-});
-
-// CORS proxy
-app.get('/api/category', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
 });
 
 // api routes

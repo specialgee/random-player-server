@@ -19,11 +19,6 @@ app.use(cors());
 const db = require('./db');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })
@@ -36,6 +31,12 @@ app.post("/", (req, res) => {
 app.use('/users', require('./users/users.controller'));
 app.use('/api', videoRouter);
 app.use('/api', categoryRouter);
+
+// CORS proxy
+app.use('/api/category', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
 
 // global error handler
 const errorHandler = require('helpers/error-handler');

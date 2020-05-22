@@ -28,7 +28,7 @@ app.post("/", (req, res) => {
 });
 
 // CORS proxy
-app.post('/api/category', (req, res, next) => {
+app.get('/api/category', (req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
   next();
 });

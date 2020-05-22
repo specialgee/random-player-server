@@ -27,6 +27,12 @@ app.post("/", (req, res) => {
   res.send("POST request");
 });
 
+// CORS proxy
+app.post('/api/category', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 // api routes
 app.use('/users', require('./users/users.controller'));
 app.use('/api', videoRouter);

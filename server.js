@@ -19,6 +19,11 @@ app.use(cors());
 const db = require('./db');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  next();
+});
+
 app.get('/', (req, res) => {
     res.send('Hello World!');
 })

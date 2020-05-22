@@ -6,7 +6,7 @@ const Category = new Schema(
     {
         name: { type: String, required: true },
         category: { type: Array, required: false },
-        cover: { type: String, data: Buffer, required: true },
+        cover: { type: String, required: true },
         url: { type: String, required: false },
     },
     { timestamps: false },

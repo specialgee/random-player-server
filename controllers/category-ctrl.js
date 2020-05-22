@@ -16,10 +16,11 @@ createCategory = (req, res) => {
         return res.status(400).json({ success: false, error: err });
     }
 
+    res.header('Access-Control-Allow-Origin', '*');
+
     category
         .save()
         .then(() => {
-            res.header('Access-Control-Allow-Origin', '*');
             return res.status(201).json({
                 success: true,
                 id: category._id,

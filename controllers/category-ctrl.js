@@ -19,6 +19,7 @@ createCategory = (req, res) => {
     category
         .save()
         .then(() => {
+            res.header('Access-Control-Allow-Origin', '*');
             return res.status(201).json({
                 success: true,
                 id: category._id,
@@ -113,7 +114,6 @@ getCategories = async (req, res) => {
                 .status(404)
                 .json({ success: false, error: `Category not found` });
         }
-        res.header('Access-Control-Allow-Origin', '*');
         return res.status(200).json({ success: true, data: categories });
     }).catch(err => console.log(err))
 }

@@ -9,6 +9,7 @@ const apiPort = process.env.PORT || 3000
 
 const app = express();
 
+// enable cors for all routes
 app.use(cors());
 app.options('*', cors());
 

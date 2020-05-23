@@ -1,6 +1,10 @@
 random-player-server
 ---
 
+DEPRECATED ⛔️ 
+
+Project moved to [donats-server](https://github.com/specialgee/donats-server) 
+
 [Donats](https://github.com/specialgee/donats) Back-End
 
 ### Usage

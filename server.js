@@ -16,9 +16,6 @@ app.options('*', cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-const videoRouter = require('./routes/video-router');
-const categoryRouter = require('./routes/category-router');
-
 // connect to mongoDB
 const db = require('./db');
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
@@ -32,6 +29,9 @@ app.post("/", (req, res) => {
 });
 
 // api routes
+const videoRouter = require('./routes/video-router');
+const categoryRouter = require('./routes/category-router');
+
 app.use('/users', require('./users/users.controller'));
 app.use('/api', videoRouter);
 app.use('/api', categoryRouter);
